@@ -1,13 +1,13 @@
 "use client";
 import GuestNavbar from "./components/GuestNavbar";
 import { useEffect } from "react";
-import { useWeather } from "../context/WeatherContext"; 
+import { useWeather } from "../context/WeatherContext";
 
 export default function Home() {
   const { weather, fetchWeather, loading, updateWeather } = useWeather();
-  
+
   useEffect(() => {
-    fetchWeather(); 
+    fetchWeather();
   }, []);
 
   const handleUpdateWeather = (id: number, city_name: string) => {
@@ -75,18 +75,17 @@ export default function Home() {
                       Max: {data.maxTemp}°C | Min: {data.minTemp}°C
                     </p>
                   </div>
-                  <button onClick={() => 
-                    handleUpdateWeather(
-                      data.id, data.city_name
-
-                    )} 
-                    className="bg-blue-300 px-4 rounded-md hover:bg-blue-700">Update</button>
+                  <button
+                    onClick={() => handleUpdateWeather(data.id, data.city_name)}
+                    className="bg-blue-700 px-4 rounded-md hover:bg-blue-300"
+                  >
+                    Update
+                  </button>
                 </div>
               ))
             )}
           </div>
         </div>
-        
       </div>
     </>
   );
