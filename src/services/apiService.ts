@@ -26,6 +26,18 @@ export interface WeatherData {
       method: "GET",
     });
   };
+
+
+
+  export const updateWeatherData = (id: number, city_name: string): Promise<WeatherData> => {
+    return request<WeatherData>(`/update/${id}/${city_name}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      },
+    });
+  };
+
   
   
   export const createWeatherData = (data: Partial<WeatherData>): Promise<WeatherData> => {
