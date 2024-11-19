@@ -1,11 +1,10 @@
 "use client";
 
-"use client";
-
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import UserNavbar from "../components/UserNavbar";
 import { fetchAllUsers, UserData } from "@/services/apiServiceUser";
+import CreateAdminForm from "../components/CreateAdmin";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -36,16 +35,22 @@ const Dashboard = () => {
     }
   }, [userRole]);
 
+  const token = localStorage.getItem("token");
+
   return (
     <>
       <UserNavbar />
-      <div className="bg-cyan-800">
+      <div className="p-4 bg-blue-800 bg-gradient-to-b from-black justify-center">
+        <div className="flex flex-col justify-center items-center ">
+          <h1 className="text-white sm:text-4xl">Välkommen till Dashboard!</h1>
+          <p>Du har "{userRole}"</p>
+          <p>sidan är under konstruktion</p>
+        </div>
+      </div>
+      <div className="bg-blue-800 bg-gradient-to-b">
         {(userRole === "ROLE_ADMIN" || userRole === "ROLE_SUPER_ADMIN") && (
           <>
-            <div
-              className="flex justify-center p-4 
-        bg-gradient-to-b from-black"
-            >
+            <div className="flex justify-center p-4 ">
               <h2 className="text-white sm:text-lg xl:text-xl sm:p-2">
                 User Database
               </h2>
@@ -86,7 +91,7 @@ const Dashboard = () => {
                         <td className="border border-slate-700 px-4 py-2">
                           {user.fullName}
                         </td>
-                        {/* Hantera undefined rollers med || [] */}
+
                         <td className="border border-slate-700 px-4 py-2">
                           {user.role.name}
                         </td>
@@ -107,14 +112,14 @@ const Dashboard = () => {
           </>
         )}
       </div>
+      <div className="pt-36 bg-blue-800">
 
-      <div className="flex h-screen bg-cyan-800 justify-center">
-        <div className="flex flex-col justify-center items-center ">
-          <h1 className="text-white sm:text-4xl">Välkommen till Dashboard!</h1>
-          <p>Du har "{userRole}"</p>
-          <p>sidan är under konstruktion</p>
-        </div>
       </div>
+      {userRole === "ROLE_SUPER_ADMIN" && (
+        <div className="flex items-center justify-center  bg-black bg-gradient-to-b from-blue-800">
+          <CreateAdminForm token={token} />
+        </div>
+      )}
     </>
   );
 };

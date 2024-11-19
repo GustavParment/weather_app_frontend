@@ -13,6 +13,7 @@ interface WeatherData {
   weatherDescription: string;
   maxTemp: number;
   minTemp: number;
+  icon:string
 }
 
 interface WeatherContextType {

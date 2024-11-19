@@ -29,14 +29,12 @@ const LoginPage = () => {
 
       localStorage.setItem("token", data.token);
 
-      
       try {
         const decodedToken: any = jwtDecode(data.token);
-        const userRoles = decodedToken.roles; 
+        const userRoles = decodedToken.roles;
         console.log(decodedToken.roles);
 
         if (userRoles && userRoles.length > 0) {
-          
           localStorage.setItem("userRole", userRoles[0]);
         }
 
@@ -55,13 +53,18 @@ const LoginPage = () => {
   return (
     <>
       <GuestNavbar />
-      <div className="flex justify-center items-center min-h-screen bg-blue-300 px-4">
-        <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-xs">
-          <h2 className="text-cyan-800 text-2xl text-center mb-6">Logga in på Mina Sidor</h2>
+      <div className="flex justify-center sm:items-center min-h-screen bg-blue-900 bg-gradient-to-b from-slate-950  ">
+        <div className="bg-gradient-to-b from-slate-600 shadow-md rounded-lg p-8 w-full max-w-xs">
+          <h2 className="text-white text-2xl text-center mb-6">
+            Logga in på Mina Sidor
+          </h2>
           <form onSubmit={handleLogin}>
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                Användarnamn
+              <label
+                className="block text-white text-sm font-bold mb-2"
+                htmlFor="username"
+              >
+                Email
               </label>
               <input
                 type="text"
@@ -73,7 +76,10 @@ const LoginPage = () => {
               />
             </div>
             <div className="mb-6">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+              <label
+                className="block text-white text-sm font-bold mb-2"
+                htmlFor="password"
+              >
                 Lösenord
               </label>
               <input
@@ -91,7 +97,9 @@ const LoginPage = () => {
             >
               Logga In
             </button>
-            {error && <p className="text-red-500 text-xs italic mt-4">{error}</p>}
+            {error && (
+              <p className="text-red-500 text-xs italic mt-4">{error}</p>
+            )}
           </form>
         </div>
       </div>

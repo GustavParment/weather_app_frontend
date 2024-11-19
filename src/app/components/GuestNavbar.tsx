@@ -26,6 +26,9 @@ const GuestNavbar = () => {
           <Link href="/login" className="text-white hover:text-gray-300">
             Sign in
           </Link>
+          <Link href="/signup" className="text-white hover:text-gray-300">
+            Register
+          </Link>
         </div>
         <button onClick={toggleMenu} className="md:hidden text-white">
           {isOpen ? "✕" : "☰"}
@@ -50,6 +53,9 @@ const GuestNavbar = () => {
             className="block text-white hover:text-gray-300 py-2 px-4"
           >
             Sign in
+          </Link>
+          <Link href="/signup" className="text-white hover:text-gray-300">
+            Register
           </Link>
         </div>
       )}
